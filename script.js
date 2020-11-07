@@ -55,12 +55,18 @@ function startGame() {
         if (stillPlaying) {
           timerVal--;
     
-          if (timerVal === 0) {
+          if (timerVal <= 0) {
             clearInterval(interval);
+            stillPlaying = false;
             gameOver();
           }
 
           timer.textContent = timerVal;
+
+          if (questionIndex === questions.length) {
+              stillPlaying = false;
+              gameOver();
+          }
         }
       }, 1000);
 
@@ -88,18 +94,35 @@ function renderQuestion() {
         if(element.matches("button")){
             var index = element.getAttribute("data-index");
             if(index == JSON.stringify(questions[questionIndex].correctIDX)){
-                //correct
+                var h3R = document.createElement("h3");
+                h3R.textContent = "Correct!";
+                QBank.appendChild(h3R);
+
                 questionIndex++;
+                clearQuestion();
                 renderQuestion();
+
             }else {
-                //wrong
-                timerVal -= 20;
+                var h3W = document.createElement("h3");
+                h3W.textContent = "Wrong, minus 10";
+                QBank.appendChild(h3W);
+
+                timerVal -= 10;
             }
+
         }
     });
 }
 
-function gameOver(){}
+function clearQuestion(){
+    while(QBank.hasChildNodes()){
+        QBank.removeChild(QBank.childNodes[0]);
+    }
+}
+
+function gameOver(){
+    
+}
 
 
 init();
