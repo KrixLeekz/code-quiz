@@ -3,16 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Code Quiz</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 </head>
 
 <body>
     <nav>
-        <h2 class="float-left"><a href="#HighScore.html">Highscores</a></h2>
+        <h2 class="float-left"><a class="text-success" href="HighScore.html">Highscores</a></h2>
         <h2 class="float-right">Time: 100</h2>
     </nav>
+
+    <section class="container mt-4">
+        <h1 class="text-center" data-visible="true">Welcome to Code Quiz</h1>
+
+        <form class="text-center">
+            <button type="button" class="btn btn-primary" 
+            data-visible="true">Play</button>
+
+            <a type="button" class="btn btn-warning" href="HighScore.html"  
+            data-visible="true">View Highscores</a>
+        </form>
+
+        <article>
+            <h1 id="current-question"></h1>
+            <ul id="current-question-bank"></ul>
+        </article>
+    </section>
+
     <script src="./script.js"></script>
 </body>
 
